@@ -8,6 +8,15 @@
 
 " Author: @Qbone
 
+" ===
+" === Auto load for first time uses
+" ===
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " ====================
 " === Editor Setup ===
 " ====================
@@ -254,3 +263,43 @@ autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
 map tx :r !figlet
+
+" ===                               ===
+" === Install Plugins with Vim-Plug ===
+" ===                               ===
+
+call plug#begin('~/.vim/plugged')
+
+" Pretty Dress
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'connorholyday/vim-snazzy'
+Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'bling/vim-bufferline'
+
+call plug#end()
+
+
+
+" ===                 ===
+" === Dress up my vim ===
+" ===                 ===
+map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+map <LEADER>c2 :set background=light<CR>:colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
+
+set termguicolors     " enable true colors support
+let ayucolor="light"  " for light version of theme
+colorscheme snazzy
+let g:SnazzyTransparent = 1
+set background=dark
+let g:airline_theme='dracula'
+
+let g:lightline = {
+  \     'active': {
+  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+  \     }
+  \ }
+
