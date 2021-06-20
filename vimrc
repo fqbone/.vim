@@ -279,7 +279,13 @@ Plug 'dracula/vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'bling/vim-bufferline'
 
+" File navigation
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+
 call plug#end()
+
 
 
 
@@ -302,4 +308,20 @@ let g:lightline = {
   \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
   \     }
   \ }
+
+
+" ===          ===
+" === NERDTree ===
+" ===          ===
+map tt :NERDTreeToggle<CR>
+let NERDTreeMapOpenExpl = ""
+let NERDTreeMapUpdir = ""
+let NERDTreeMapUpdirKeepOpen = "l"
+let NERDTreeMapOpenSplit = ""
+let NERDTreeOpenVSplit = ""
+let NERDTreeMapActivateNode = "i"
+let NERDTreeMapOpenInTab = "o"
+let NERDTreeMapPreview = ""
+let NERDTreeMapCloseDir = "n"
+let NERDTreeMapChangeRoot = "y"
 
