@@ -88,6 +88,9 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
+"make F2 to control paste mode
+set pastetoggle=<F2>
+
 " ===                  ===
 " === Window behaviors ===
 " ===                  ===
@@ -161,6 +164,9 @@ map <LEADER>fd /\(\<\w\+\>\)\_s*\1
 
 " Others
 map <LEADER>o o<Esc>u
+
+"Sudo to write
+cnoremap w!! w !sudo tee % > /dev/null
 
 " ===                 ===
 " === Cursor Movement ===
@@ -278,6 +284,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'bling/vim-bufferline'
+Plug 'mhinz/vim-startify'
 
 " File navigation
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -298,16 +305,9 @@ map <LEADER>c2 :set background=light<CR>:colorscheme ayu<CR>:AirlineTheme ayu_li
 set termguicolors     " enable true colors support
 let ayucolor="light"  " for light version of theme
 colorscheme snazzy
-let g:SnazzyTransparent = 1
+let g:SnazzyTransparent = 0
 set background=dark
 let g:airline_theme='dracula'
-
-let g:lightline = {
-  \     'active': {
-  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
-  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
-  \     }
-  \ }
 
 
 " ===          ===
