@@ -289,6 +289,7 @@ Plug 'mhinz/vim-startify'
 " File navigation
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'kien/ctrlp.vim',{ 'on': 'CtrlP' }
 
 
 call plug#end()
@@ -314,14 +315,13 @@ let g:airline_theme='dracula'
 " === NERDTree ===
 " ===          ===
 map tt :NERDTreeToggle<CR>
-let NERDTreeMapOpenExpl = ""
-let NERDTreeMapUpdir = ""
-let NERDTreeMapUpdirKeepOpen = "l"
-let NERDTreeMapOpenSplit = ""
-let NERDTreeOpenVSplit = ""
-let NERDTreeMapActivateNode = "i"
-let NERDTreeMapOpenInTab = "o"
-let NERDTreeMapPreview = ""
-let NERDTreeMapCloseDir = "n"
-let NERDTreeMapChangeRoot = "y"
+nnoremap <leader>f :NERDTreeFind<CR>
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
+
+" ===       ===
+" === CtrlP ===
+" ===       ===
+map <C-p> :CtrlP<CR>
